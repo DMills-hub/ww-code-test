@@ -29,7 +29,12 @@ const InputContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 `;
+
+const StyledLabel = styled.label`
+  font-weight: bold;
+`
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -50,11 +55,12 @@ const Main = () => {
       </Container>
       <Container>
         <InputContainer>
+          <StyledLabel for="income-per-annum-input" >Income Per Annum (£)</StyledLabel>
           <Input
             onChange={(_, { value }) => debouncedChange(value)}
             size="big"
-            label="Income (£)"
             type="number"
+            id="income-per-annum-input"
           />
         </InputContainer>
       </Container>
