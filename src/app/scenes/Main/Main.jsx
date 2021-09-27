@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import NationalInsuranceComparer from "../../components/NationalInsuranceComparer";
 import { Input } from "semantic-ui-react";
 import styled from "@emotion/styled";
 import { useDispatch } from "react-redux";
 import { changeIncome } from "../../store/actions/nationalInsurance";
+import _ from 'lodash'
 
 const MainContainer = styled.div`
   display: flex;
@@ -33,6 +34,12 @@ const InputContainer = styled.div`
 const Main = () => {
   const dispatch = useDispatch();
 
+  const onChange = useCallback((value) => {
+    dispatch(changeIncome(Number(value) ?? 0))
+  }, [dispatch, changeIncome]) 
+
+  const debouncedChange = _.debounce(onChange, 300)
+
   return (
     <MainContainer>
       <Container>
@@ -44,7 +51,7 @@ const Main = () => {
       <Container>
         <InputContainer>
           <Input
-            onChange={(_, { value }) => dispatch(changeIncome(Number(value)))}
+            onChange={(_, { value }) => debouncedChange(value)}
             size="big"
             label="Income (£)"
             type="number"
