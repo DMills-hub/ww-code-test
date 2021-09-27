@@ -1,4 +1,4 @@
-const nationalInsurance = require("../services/national-insurance");
+const nationalInsurance = require('../services/national-insurance');
 
 module.exports = (req, res) => {
   res.send({
