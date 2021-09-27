@@ -1,9 +1,5 @@
 const R = require('ramda');
-const {
-  Given,
-  When,
-  Then,
-} = require('cucumber');
+const { Given, When, Then } = require('cucumber');
 const Decimal = require('decimal.js');
 const tk = require('timekeeper');
 const moment = require('moment');

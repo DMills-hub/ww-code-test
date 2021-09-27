@@ -49,12 +49,14 @@ module.exports = () => {
           use: ['babel-loader'],
           exclude: /node_modules/,
         },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
       ],
     },
     resolve: {
-      modules: [
-        'node_modules',
-      ],
+      modules: ['node_modules'],
       alias: {},
       extensions: ['.js', '.json', '.jsx'],
     },
